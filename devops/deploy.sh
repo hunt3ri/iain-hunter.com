@@ -11,5 +11,5 @@ if [ $BRANCH == "master" ]
     then
         # Deploy to S3
         echo Deploying to S3
-        aws s3 sync build/ s3://www.iain-hunter.com
+        aws s3 sync ../../ s3://www.iain-hunter.com
 fi
