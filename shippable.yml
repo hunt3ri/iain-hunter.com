@@ -1,0 +1,29 @@
+# language setting
+language: python
+
+# version numbers test
+python:
+    - 3.7
+
+env:
+    global:
+        - secure: ZzC5Z1+TIpKnxCsxgMv2xhR962k7C1DD52K3SCbzL7rflBh3DN8jxpLwECQfMV8bPluqpPDKjFHo0I9jlb83qcPtC+ECgUKUvXI3WfZs+iyHieps8z7I5rkxgnIf+mcVHJGeWSDiBxkkpRGt59J61LO54tbGYfZfohEEx5g11bCYcR2vsGrKCYwROdpJgVpQkIIKxPz6R4ggaHfOq8ZjMznazTd25qPb0uZUp4/JntSZ39g3q5FxlHAVIRn5zaeEKGnHExFCOvUnJAdyFtilDRinhtNzp7iHrhJbfx9AeAkvmMuutJd8JPnwlgOSM61FO9tlcZfZrpAL88DIsyd/mQ==
+
+build:
+    ci:
+        # Install Python dependencies
+        - python --version
+        - pip install --upgrade pip
+        - pip install awscli
+
+    on_success:
+        # Deploy to S3
+        - echo Deploying to S3
+        - . ./devops/deploy.sh
+
+integrations:
+    notifications:
+        - integrationName: email
+          type: email
+          recipients:
+              - iain.hunter@outlook.com
