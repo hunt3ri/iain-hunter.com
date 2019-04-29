@@ -20,6 +20,7 @@ build:
         - mkdir dist
         - cp -R assets dist
         - cp index.html dist
+        - ls -lrt dist
 
     on_success:
         # Deploy to S3
