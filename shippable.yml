@@ -16,6 +16,11 @@ build:
         - pip install --upgrade pip
         - pip install awscli
 
+        # Build dist
+        - mkdir dist
+        - cp -R assets dist
+        - cp index.html dist
+
     on_success:
         # Deploy to S3
         - echo Deploying to S3
